@@ -1,0 +1,219 @@
+/* src/features/hero/Hero.css */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 80px); /* Полноэкранный формат за вычетом шапки */
+  display: flex;
+  align-items: center;
+  
+  /* Фоновое изображение красивого деревянного дома */
+  background-image: url('../../assets/images/a2bff3070b2e19980c49e7e1c8252bd5.jpg');
+  /*url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1920&q=80');*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Градиентное затемнение поверх фото: слева темнее под текст, справа открывает красоту дома */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(16, 16, 16, 0.85) 0%, rgba(16, 16, 16, 0.3) 100%);
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Полупрозрачная подложка под текст, вдохновленная референсом a9b8c950-cb73-4448-9c4c-20e70914373e */
+.hero-content-card {
+  max-width: 760px;
+  background: rgba(22, 22, 22, 0.45); /* Матовый темный фон */
+  backdrop-filter: blur(12px); /* Эффект размытия фотографии позади текста */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Тонкая премиальная рамка */
+  padding: 60px;
+  border-radius: 2px;
+}
+
+.hero-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #b0b0b0;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: 54px;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Яркий, чистый акцент для ключевого предложения */
+.hero-title .accent-text {
+  color: var(--color-accent); /* Твой фирменный красный/оранжевый */
+}
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 44px;
+  max-width: 640px;
+}
+
+/* Строгая стильная кнопка-рамка */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: transparent;
+  color: #ffffff;
+  padding: 20px 42px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-arrow {
+  transition: transform var(--transition);
+}
+
+/* Интерактив при наведении */
+.btn-hero:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.btn-hero:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+/* Сетка адаптивности под мобилки */
+
+/* src/features/hero/Hero.css */
+
+/* ... (весь твой верхний код до медиа-запросов остается без изменений) ... */
+
+
+/* --- АДАПТИВНЫЙ ДИЗАЙН --- */
+
+/* Планшетная адаптация */
+@media (max-width: 992px) {
+  .hero-content-card {
+    max-width: 680px;
+    padding: 50px 40px;
+    background: rgba(16, 16, 16, 0.6); /* Чуть плотнее для средних экранов */
+  }
+  
+  .hero-title {
+    font-size: 44px;
+  }
+}
+
+/* Находится в самом низу файла src/features/hero/Hero.css */
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 80px); 
+    display: flex;
+    align-items: center;
+    padding: 48px 0; /* Безопасные отступы сверху и снизу, чтобы контент не упирался в края экрана */
+    box-sizing: border-box;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom, 
+      rgba(16, 16, 16, 0.8) 0%, 
+      rgba(16, 16, 16, 0.6) 50%, 
+      rgba(16, 16, 16, 0.85) 100%
+    );
+  }
+
+  .hero-content-card {
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  .hero-title {
+    font-size: 32px; 
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+
+  .hero-title br {
+    display: none;
+  }
+
+  .hero-desc {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 36px; /* Оптимальный отступ до кнопки */
+    color: #e4e4e4;
+  }
+
+  /* Обертка для кнопки */
+  .hero-actions {
+    width: 100%;
+    display: block;
+  }
+
+  /* Сама кнопка «Рассчитать стоимость» */
+  .btn-hero {
+    display: flex; /* Переключаем на чистый flex для блочной модели */
+    width: 100%; 
+    box-sizing: border-box; /* Строго удерживает кнопку в границах экрана, учитывая padding */
+    justify-content: center;
+    align-items: center;
+    padding: 18px 24px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 2px; /* Легкое, едва заметное скругление для премиального вида */
+  }
+}
+
+/* Коррекция под совсем маленькие экраны (типа iPhone SE) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 28px;
+  }
+  .hero-desc {
+    font-size: 13.5px;
+    margin-bottom: 28px;
+  }
+  .btn-hero {
+    padding: 16px 20px;
+    font-size: 12px;
+  }
+}
+

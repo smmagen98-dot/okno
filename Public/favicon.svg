@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Основной строгий контур современной рамы -->
+  <rect x="3" y="3" width="26" height="26" rx="1" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Внутренние линии профиля (импост) -->
+  <line x1="16" y1="3" x2="16" y2="29" stroke="#1a1a1a" stroke-width="2.5"/>
+  <line x1="16" y1="13" x2="29" y2="13" stroke="#1a1a1a" stroke-width="2.5"/>
+  
+  <!-- Премиальный красный акцент на левой створке в цвет бренда -->
+  <rect x="5.5" y="5.5" width="8" height="21" fill="#DE382B"/>
+</svg>

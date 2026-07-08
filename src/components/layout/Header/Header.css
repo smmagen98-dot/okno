@@ -1,0 +1,193 @@
+
+/* src/components/layout/Header/Header.css */
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Поддержка Safari */
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  transition: background-color var(--transition);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  position: relative;
+}
+
+.header-logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  cursor: default;
+  user-select: none;
+  transition: font-size 0.3s ease;
+}
+
+.header-logo span {
+  color: var(--color-accent);
+}
+
+.header-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.header-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  opacity: 0.7;
+  transition: opacity var(--transition), color 0.3s ease;
+  position: relative;
+}
+
+.header-nav a:hover {
+  opacity: 1;
+}
+
+.header-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  transition: all 0.3s ease;
+}
+
+.header-phone {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  transition: color var(--transition), font-size 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-phone:hover {
+  color: var(--color-accent);
+}
+
+.header-worktime {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Стили кнопки бургера */
+.burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+  padding: 0;
+  z-index: 1010;
+}
+
+.burger-btn span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимация превращения бургера в строгий крестик 'X' */
+.burger-btn.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-btn.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* --- Адаптивный блок под мобильные устройства --- */
+@media (max-width: 768px) {
+  .burger-btn {
+    display: flex;
+    order: 3; /* Сдвигаем бургер в крайнее правое положение */
+  }
+
+  .header-logo {
+    font-size: 17px; /* Немного уменьшаем, чтобы освободить место на 375px */
+    order: 1;
+  }
+
+  .header-contacts {
+    order: 2;
+    margin-left: auto;
+    margin-right: 16px; /* Аккуратный отступ перед бургером */
+    align-items: flex-end;
+  }
+
+  .header-phone {
+    font-size: 13.5px; /* Компактный размер для мобильного телефона */
+  }
+
+  .header-worktime {
+    display: none; /* Полностью убираем со скриншота, чтобы разгрузить высоту */
+  }
+
+  /* Трансформация навигации в выпадающую полноэкранную премиум-панель */
+  .header-nav {
+    position: fixed;
+    top: 80px; /* Начинается ровно под шапкой */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    
+    /* Анимация выезда сверху вниз */
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease;
+    pointer-events: none; /* Исключаем клики в закрытом состоянии */
+  }
+
+  .header-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header-nav a {
+    font-size: 20px; /* Крупный, читабельный размер ссылок для пальца */
+    font-weight: 600;
+    opacity: 0.9;
+  }
+}
+
+/* Экстремально узкие экраны (меньше 350px) */
+@media (max-width: 350px) {
+  .header-logo {
+    font-size: 15px;
+  }
+  .header-phone {
+    font-size: 12px;
+  }
+  .header-contacts {
+    margin-right: 10px;
+  }
+}
+
